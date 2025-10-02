@@ -10,7 +10,8 @@
         "main.blocks",
         "main.ts",
         "README.md",
-        "contador-de-passos.md"
+        "contador-de-passos.md",
+        "name-tag.md"
     ],
     "testFiles": [
         "test.ts"
