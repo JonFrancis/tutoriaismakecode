@@ -11,7 +11,8 @@
         "main.ts",
         "README.md",
         "contador-de-passos.md",
-        "name-tag.md"
+        "name-tag.md",
+        "reflexos.md"
     ],
     "testFiles": [
         "test.ts"
