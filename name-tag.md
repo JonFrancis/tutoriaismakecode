@@ -10,7 +10,7 @@ author: João Francisco - Br.ino
 
 Veja seu nome em 💡 luzes! 💡 Programe o micro:bit para rolar seu nome pela tela.
 
-![Nome rolando nos LEDs](https://raw.githubusercontent.com/BrinoOficial/name-tag/ad304e87becb5a3e14f885e1f7d31a0fd40a8601/name-tag-menor.gif)
+![Nome rolando nos LEDs](https://raw.githubusercontent.com/BrinoOficial/TutoriaisMakeCode/master/name-tag-menor.gif)
 
 ## {Step 1}
 

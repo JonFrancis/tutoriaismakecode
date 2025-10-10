@@ -15,7 +15,8 @@
         "reflexos.md",
         "pinha.md",
         "termometro-receptor.md",
-        "termometro-emissor.md"
+        "termometro-emissor.md",
+        "energia.md"
     ],
     "testFiles": [
         "test.ts"
