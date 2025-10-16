@@ -16,7 +16,7 @@ let lendo = false
 ## {Ler os pinos P0 e P1}
 Vamos criar duas variáveis para guardar a leitura dos pinos a cada instante: ``||variables:b0||`` e ``||variables:b1||``.
 
-No bloco ``||basic:sempre||``:
+No bloco ``||basic:sempre||``, vamos adicionar alguns blocos de ``||pins:Pins||``:
 - Defina ``||variables:b0||`` = ``||pins:leitura digital pin P0||``
 - Defina ``||variables:b1||`` = ``||pins:leitura digital pin P1||``
 
@@ -47,7 +47,7 @@ basic.forever(function () {
         } else if (true) {
             
         }
-    } else {
+    } else if (true){
 
     }
 })
@@ -55,7 +55,7 @@ basic.forever(function () {
 ---
 
 ## {Detectar o novo bit}
-Dentro do primeiro bloco ``||logic:se||`` a condição vai ser ``lendo = falso``.
+Dentro do primeiro bloco ``||logic:se||`` a condição vai ser o bloco ``||logic:não lendo||``, ou seja, quando ``||variable:lendo||`` for 0.
 
 Dentro do segundo bloco ``||logic:se||`` a condição vai ser ``b0 = 1`` **e** ``b1 = 0``.
 
@@ -87,7 +87,7 @@ Dentro do segundo bloco ``||logic:se||`` vamos adicionar:
 - ``||basic:mostrar número 0||``
 - ``||basic:pause 120||``
 - ``||basic:limpar tela||``
-- **``lendo = verdadeiro``**.
+- Bloco ``||pins:definir||`` e dentro dele **``lendo = verdadeiro``**.
 
 ```blocks
 let lendo = false
@@ -145,7 +145,7 @@ basic.forever(function () {
 ## {Esperar o pulso terminar}
 Para aceitar o **próximo** bit, precisamos que **ambos** os pinos voltem a **0**.  
 Ainda no para isso no último bloco ``||basic:senão||`` adicione:
-- **``lendo = falso``**.
+- ``||pins:definir||`` **``lendo = falso``**.
 
 No final do `sempre`, adicione uma **``||basic:pausa 5||``**.
 
@@ -180,12 +180,10 @@ basic.forever(function () {
 ---
 
 ## {Teste}
-1. Carregue este programa no **RECEPTOR**.  
-2. Carregue o **EMISSOR** (que envia 0 no P0 e 1 no P1).  
+1. Carregue este programa no @boardname@ que vai ser o **RECEPTOR**.  
+2. Com a montagem igual a descrita no livro podemos testar.  
 3. Aperte **A** no emissor para enviar a sequência.  
-4. O receptor deve **piscar 0 e 1** a cada **novo** bit (mesmo quando forem iguais seguidos).
-
-> Se algum bit não aparecer, aumente um pouco o tempo do bit no emissor (ex.: **300 ms**) ou a pausa do receptor (ex.: **10–15 ms**).
+4. O receptor deve **piscar 0 e 1** a cada **novo** bit.
 
 ```template
 basic.forever(function () { })
