@@ -17,7 +17,8 @@
         "termometro-receptor.md",
         "termometro-emissor.md",
         "energia.md",
-        "receptor-binario.md"
+        "receptor-binario.md",
+        "controle-remoto.md"
     ],
     "testFiles": [
         "test.ts"
