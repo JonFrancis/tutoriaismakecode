@@ -16,7 +16,8 @@
         "pinha.md",
         "termometro-receptor.md",
         "termometro-emissor.md",
-        "energia.md"
+        "energia.md",
+        "receptor-binario.md"
     ],
     "testFiles": [
         "test.ts"
