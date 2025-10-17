@@ -4,8 +4,7 @@
     "dependencies": {
         "core": "*",
         "radio": "*",
-        "microphone": "*",
-        "microbit-robot": "github:microsoft/microbit-robot"
+        "microphone": "*"
     },
     "files": [
         "main.blocks",
