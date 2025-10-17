@@ -12,6 +12,7 @@ Use o mesmo **grupo** do transmissor.
 
 ```blocks
 radio.setGroup(1)
+robot.yahboomTinyBit.start()
 ```
 
 ---
@@ -80,7 +81,7 @@ let tempo = 400
 let ultimo = 0
 basic.forever(function () {
     if (control.millis() - ultimo > tempo) {
-        
+        robot.motorStop()
     } else {
     }
 })
@@ -104,10 +105,10 @@ let ultimo = 0
 let cmd = 4
 basic.forever(function () {
     if (control.millis() - ultimo > tempo) {
-        
+        robot.motorStop()
     } else {
         if (cmd == 0) {
-            
+            robot.motorTank(100, 100)
         } else {  
         }
     }
@@ -132,12 +133,12 @@ let ultimo = 0
 let cmd = 4
 basic.forever(function () {
     if (control.millis() - ultimo > tempo) {
-        
+        robot.motorStop()
     } else {
         if (cmd == 0) {
-            
+            robot.motorTank(100, 100)
         } else if (cmd == 1){
-            
+            robot.motorTank(0, 100)
         } else {
         }
     }
@@ -162,14 +163,14 @@ let ultimo = 0
 let cmd = 4
 basic.forever(function () {
     if (control.millis() - ultimo > tempo) {
-        
+        robot.motorStop()
     } else {
         if (cmd == 0) {
-            
+            robot.motorTank(100, 100)
         } else if (cmd == 1){
-            
+            robot.motorTank(0, 100)
         } else if (cmd == 2){
-            
+            robot.motorTank(100, 0)
         } else {
         }
     }
@@ -194,16 +195,16 @@ let ultimo = 0
 let cmd = 4
 basic.forever(function () {
     if (control.millis() - ultimo > tempo) {
-        
+        robot.motorStop()
     } else {
         if (cmd == 0) {
-            
+            robot.motorTank(100, 100)
         } else if (cmd == 1){
-           
+            robot.motorTank(0, 100)
         } else if (cmd == 2){
-           
+            robot.motorTank(100, 0)
         } else if (cmd == 3){
-           
+            robot.motorTank(-100, -100)
         } else {
         }
     }
@@ -224,18 +225,18 @@ let ultimo = 0
 let cmd = 4
 basic.forever(function () {
     if (control.millis() - ultimo > tempo) {
-        
+        robot.motorStop()
     } else {
         if (cmd == 0) {
-           
+            robot.motorTank(100, 100)
         } else if (cmd == 1){
-           
+            robot.motorTank(0, 100)
         } else if (cmd == 2){
-           
+            robot.motorTank(100, 0)
         } else if (cmd == 3){
-           
+            robot.motorTank(-100, -100)
         } else {
-           
+            robot.motorStop()
         }
     }
 })
@@ -252,18 +253,18 @@ let ultimo = 0
 let cmd = 4
 basic.forever(function () {
     if (control.millis() - ultimo > tempo) {
-       
+        robot.motorStop()
     } else {
         if (cmd == 0) {
-            
+            robot.motorTank(100, 100)
         } else if (cmd == 1){
-           
+            robot.motorTank(0, 100)
         } else if (cmd == 2){
-            
+            robot.motorTank(100, 0)
         } else if (cmd == 3){
-           
+            robot.motorTank(-100, -100)
         } else {
-          
+            robot.motorStop()
         }
     }
     basic.pause(20)
