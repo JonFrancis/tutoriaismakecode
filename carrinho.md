@@ -259,14 +259,12 @@ basic.forever(function () {
 })
 ```
 
-> Dica: para movimentos mais suaves, troque `100` por `60`.
-
 ---
 
 ## {Teste}
-- Baixe no **Tiny:bit**.  
-- Com o transmissor ligado, segure **A+B** (frente), **B** (direita), **A** (esquerda) ou **sacuda** (trás).  
-- Ao soltar/parar de sacudir, ele volta a **neutro**; se o transmissor apagar, o **timeout** para o robô.
+- Conecte o @boardname@ e baixe o programa nele.  
+- Conecte o @boardname@ no carrinho tiny:bit.
+- Ligue o carrinho e o micro:bit controle remoto e teste os comandos.
 
 ```template
 // Carregado automaticamente quando o tutorial abrir
