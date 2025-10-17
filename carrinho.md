@@ -1,18 +1,6 @@
 # Tiny:bit — **RECEPTOR**
 
-```package
-github:microsoft/microbit-robot#v2.7.4
-```
-
 ## Receba números e mova o robô @unplugged
-
-`||robot:robot ... start||` O robô vai escutar o rádio e aplicar o comando. Se ficar um tempinho **sem receber**, ele **para** (segurança).
-
-- **0 = frente**  
-- **1 = direita**  
-- **2 = esquerda**  
-- **3 = trás**  
-- **outros (4/neutro)** = parar
 
 ---
 
@@ -27,39 +15,244 @@ robot.yahboomTinyBit.start()
 
 ---
 
-## {Ler os números recebidos}
-Guarde o último comando e **o momento** em que chegou (para o temporizador).
+## {Variável}
+Crie as ``||variables:Variáveis||`` **cmd**, **ultimo** e **tempo**.
+
+-``||variables:cmd||`` é o nosso comando, vamos iniciar ele em 4, pois é o comando para o carrinho ficar parado.
+
+-``||variables:ultimo||`` serve para salvarmos o momento em que o comando chegou, vamos iniciar em 0.
+
+-``||variables:tempo||`` serve para testarmos se o carrinho parou de receber comandos, vamos iniciar em 400 (que será equivalente a 0,4 segundos).
 
 ```blocks
 let cmd = 4
-let ultimoRx = 0
+let ultimo = 0
+let tempo = 400
+```
+
+---
+
+## {Guardar o comando}
+Vamos utiliza o bloco ``||radio:ao receber rádio n||``.
+
+E dentro desse bloco fazer ``||variable:cmd||`` = n;
+
+e ultimo = ``||control:millis||``.
+
+
+```blocks
+let cmd = 4
+let ultimo = 0
 radio.onReceivedNumber(function (n) {
     cmd = n
-    ultimoRx = control.millis()
+    ultimo = control.millis()
 })
 ```
 
 ---
 
-## {Aplicar o comando + segurança (timeout)}
-Se **passar muito tempo** sem receber nada, **pare** os motores.
+## {Fazer o carrinho andar com os comandos}
+Dentro do bloco ``||basic:sempre||`` vamos adicionar um bloco de ``||logic:se ... senão||``.
+
+A condição do ``||logic:se||`` vai ser:
+
+- ``||control:millis||`` - ``||variable:ultimo||`` > tempo. Isso vai testar se nosso último comando foi enviado faz algum tempo.
 
 ```blocks
-let TIMEOUT = 400
+let tempo = 400
+let cmd = 4
+basic.forever(function () {
+    if (control.millis() - ultimoRx > TIMEOUT) {
+    } else {
+    }
+})
+```
+
+---
+## {Fazer o carrinho andar com os comandos}
+Dentro do bloco ``||logic:se||`` devemos parar o carrinho adicionando o comando:
+
+- ``||robot:robot motor stop||``.
+
+```blocks
+let tempo = 400
+let cmd = 4
+basic.forever(function () {
+    if (control.millis() - ultimoRx > TIMEOUT) {
+        robot.motorStop()
+    } else {
+    }
+})
+```
+
+---
+
+## {Fazer o carrinho andar com os comandos}
+Dentro de ``||logic:senão||`` vamos criar uma lista de condições.
+
+Comece pegando um bloco ``||logic:se ... senão||``.
+
+Para o carrinho andar pra frente, vamos adicionar:
+
+- A condição no ``||logic:se||`` é ``||variable::cmd||`` = 0;
+
+- Dentro do se deve ter ``||robot:motor tank 100% 100%||``.
+```blocks
+let tempo = 400
+let cmd = 4
 basic.forever(function () {
     if (control.millis() - ultimoRx > TIMEOUT) {
         robot.motorStop()
     } else {
         if (cmd == 0) {
             robot.motorTank(100, 100)      // frente
-        } else if (cmd == 1) {
-            robot.motorTank(100, 0)        // direita
-        } else if (cmd == 2) {
-            robot.motorTank(0, 100)        // esquerda
-        } else if (cmd == 3) {
-            robot.motorTank(-100, -100)    // trás
+        } else {  
+        }
+    }
+
+})
+```
+
+---
+
+## {Fazer o carrinho andar com os comandos}
+Aperte no **+** abaixo do ``||logic:senão||``.
+
+Para o carrinho andar pra direita, vamos adicionar:
+
+- A condição no ``||logic:se||`` é ``||variable::cmd||`` = 1;
+
+- Dentro do se deve ter ``||robot:motor tank 0% 100%||``.
+```blocks
+let tempo = 400
+let cmd = 4
+basic.forever(function () {
+    if (control.millis() - ultimoRx > TIMEOUT) {
+        robot.motorStop()
+    } else {
+        if (cmd == 0) {
+            robot.motorTank(100, 100)      // frente
+        } else if (cmd == 1){
+            robot.motorTank(0, 100)
         } else {
-            robot.motorStop()              // neutro
+        }
+    }
+
+})
+```
+
+---
+
+## {Fazer o carrinho andar com os comandos}
+Aperte no **+** abaixo do ``||logic:senão||``.
+
+Para o carrinho andar pra esquerda, vamos adicionar:
+
+- A condição no ``||logic:se||`` é ``||variable::cmd||`` = 2;
+
+- Dentro do se deve ter ``||robot:motor tank 100% 0%||``.
+```blocks
+let tempo = 400
+let cmd = 4
+basic.forever(function () {
+    if (control.millis() - ultimoRx > TIMEOUT) {
+        robot.motorStop()
+    } else {
+        if (cmd == 0) {
+            robot.motorTank(100, 100)      // frente
+        } else if (cmd == 1){
+            robot.motorTank(0, 100)
+        } else if (cmd == 2){
+            robot.motorTank(100, 0)
+        } else {
+        }
+    }
+
+})
+```
+
+---
+
+## {Fazer o carrinho andar com os comandos}
+Aperte no **+** abaixo do ``||logic:senão||``.
+
+Para o carrinho andar pra trás, vamos adicionar:
+
+- A condição no ``||logic:se||`` é ``||variable::cmd||`` = 3;
+
+- Dentro do se deve ter ``||robot:motor tank -100% -100%||``.
+```blocks
+let tempo = 400
+let cmd = 4
+basic.forever(function () {
+    if (control.millis() - ultimoRx > TIMEOUT) {
+        robot.motorStop()
+    } else {
+        if (cmd == 0) {
+            robot.motorTank(100, 100)      // frente
+        } else if (cmd == 1){
+            robot.motorTank(0, 100)
+        } else if (cmd == 2){
+            robot.motorTank(100, 0)
+        } else if (cmd == 3){
+            robot.motorTank(-100, -100)
+        } else {
+        }
+    }
+
+})
+```
+
+---
+
+## {Fazer o carrinho andar com os comandos}
+Para o carrinho andar pra trás, vamos adicionar no ``||logic:senão||``:
+
+- ``||robot:robot motor stop||``.
+```blocks
+let tempo = 400
+let cmd = 4
+basic.forever(function () {
+    if (control.millis() - ultimoRx > TIMEOUT) {
+        robot.motorStop()
+    } else {
+        if (cmd == 0) {
+            robot.motorTank(100, 100)      // frente
+        } else if (cmd == 1){
+            robot.motorTank(0, 100)
+        } else if (cmd == 2){
+            robot.motorTank(100, 0)
+        } else if (cmd == 3){
+            robot.motorTank(-100, -100)
+        } else {
+            robot.motorStop()
+        }
+    }
+})
+```
+
+---
+
+## {Finalizar}
+Para finalizar adicione uma pause de 20 ms ao final do código.
+
+```blocks
+let tempo = 400
+let cmd = 4
+basic.forever(function () {
+    if (control.millis() - ultimoRx > TIMEOUT) {
+        robot.motorStop()
+    } else {
+        if (cmd == 0) {
+            robot.motorTank(100, 100)      // frente
+        } else if (cmd == 1){
+            robot.motorTank(0, 100)
+        } else if (cmd == 2){
+            robot.motorTank(100, 0)
+        } else if (cmd == 3){
+            robot.motorTank(-100, -100)
+        } else {
+            robot.motorStop()
         }
     }
     basic.pause(20)
