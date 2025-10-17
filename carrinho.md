@@ -9,7 +9,6 @@ Use o mesmo **grupo** do transmissor.
 
 ```blocks
 radio.setGroup(1)
-// @highlight
 robot.yahboomTinyBit.start()
 ```
 
@@ -60,9 +59,9 @@ A condição do ``||logic:se||`` vai ser:
 
 ```blocks
 let tempo = 400
-let cmd = 4
+let ultimo = 0
 basic.forever(function () {
-    if (control.millis() - ultimoRx > TIMEOUT) {
+    if (control.millis() - ultimo > tempo) {
     } else {
     }
 })
@@ -76,9 +75,9 @@ Dentro do bloco ``||logic:se||`` devemos parar o carrinho adicionando o comando:
 
 ```blocks
 let tempo = 400
-let cmd = 4
+let ultimo = 0
 basic.forever(function () {
-    if (control.millis() - ultimoRx > TIMEOUT) {
+    if (control.millis() - ultimo > tempo) {
         robot.motorStop()
     } else {
     }
@@ -99,13 +98,14 @@ Para o carrinho andar pra frente, vamos adicionar:
 - Dentro do se deve ter ``||robot:motor tank 100% 100%||``.
 ```blocks
 let tempo = 400
+let ultimo = 0
 let cmd = 4
 basic.forever(function () {
-    if (control.millis() - ultimoRx > TIMEOUT) {
+    if (control.millis() - ultimo > tempo) {
         robot.motorStop()
     } else {
         if (cmd == 0) {
-            robot.motorTank(100, 100)      // frente
+            robot.motorTank(100, 100)
         } else {  
         }
     }
@@ -123,15 +123,17 @@ Para o carrinho andar pra direita, vamos adicionar:
 - A condição no ``||logic:se||`` é ``||variable::cmd||`` = 1;
 
 - Dentro do se deve ter ``||robot:motor tank 0% 100%||``.
+
 ```blocks
 let tempo = 400
+let ultimo = 0
 let cmd = 4
 basic.forever(function () {
-    if (control.millis() - ultimoRx > TIMEOUT) {
+    if (control.millis() - ultimo > tempo) {
         robot.motorStop()
     } else {
         if (cmd == 0) {
-            robot.motorTank(100, 100)      // frente
+            robot.motorTank(100, 100)
         } else if (cmd == 1){
             robot.motorTank(0, 100)
         } else {
@@ -151,15 +153,17 @@ Para o carrinho andar pra esquerda, vamos adicionar:
 - A condição no ``||logic:se||`` é ``||variable::cmd||`` = 2;
 
 - Dentro do se deve ter ``||robot:motor tank 100% 0%||``.
+
 ```blocks
 let tempo = 400
+let ultimo = 0
 let cmd = 4
 basic.forever(function () {
-    if (control.millis() - ultimoRx > TIMEOUT) {
+    if (control.millis() - ultimo > tempo) {
         robot.motorStop()
     } else {
         if (cmd == 0) {
-            robot.motorTank(100, 100)      // frente
+            robot.motorTank(100, 100)
         } else if (cmd == 1){
             robot.motorTank(0, 100)
         } else if (cmd == 2){
@@ -181,15 +185,17 @@ Para o carrinho andar pra trás, vamos adicionar:
 - A condição no ``||logic:se||`` é ``||variable::cmd||`` = 3;
 
 - Dentro do se deve ter ``||robot:motor tank -100% -100%||``.
+
 ```blocks
 let tempo = 400
+let ultimo = 0
 let cmd = 4
 basic.forever(function () {
-    if (control.millis() - ultimoRx > TIMEOUT) {
+    if (control.millis() - ultimo > tempo) {
         robot.motorStop()
     } else {
         if (cmd == 0) {
-            robot.motorTank(100, 100)      // frente
+            robot.motorTank(100, 100)
         } else if (cmd == 1){
             robot.motorTank(0, 100)
         } else if (cmd == 2){
@@ -209,15 +215,17 @@ basic.forever(function () {
 Para o carrinho andar pra trás, vamos adicionar no ``||logic:senão||``:
 
 - ``||robot:robot motor stop||``.
+
 ```blocks
 let tempo = 400
+let ultimo = 0
 let cmd = 4
 basic.forever(function () {
-    if (control.millis() - ultimoRx > TIMEOUT) {
+    if (control.millis() - ultimo > tempo) {
         robot.motorStop()
     } else {
         if (cmd == 0) {
-            robot.motorTank(100, 100)      // frente
+            robot.motorTank(100, 100)
         } else if (cmd == 1){
             robot.motorTank(0, 100)
         } else if (cmd == 2){
@@ -238,13 +246,14 @@ Para finalizar adicione uma pause de 20 ms ao final do código.
 
 ```blocks
 let tempo = 400
+let ultimo = 0
 let cmd = 4
 basic.forever(function () {
-    if (control.millis() - ultimoRx > TIMEOUT) {
+    if (control.millis() - ultimo > tempo) {
         robot.motorStop()
     } else {
         if (cmd == 0) {
-            robot.motorTank(100, 100)      // frente
+            robot.motorTank(100, 100)
         } else if (cmd == 1){
             robot.motorTank(0, 100)
         } else if (cmd == 2){
