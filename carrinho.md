@@ -1,3 +1,6 @@
+```package
+github:microsoft/microbit-robot
+```
 # Tiny:bit — **RECEPTOR**
 
 ## Receba números e mova o robô @unplugged
