@@ -4,7 +4,8 @@
     "dependencies": {
         "core": "*",
         "radio": "*",
-        "microphone": "*"
+        "microphone": "*",
+        "microbit-robot": "github:microsoft/microbit-robot"
     },
     "files": [
         "main.blocks",
@@ -17,7 +18,9 @@
         "termometro-receptor.md",
         "termometro-emissor.md",
         "energia.md",
-        "receptor-binario.md"
+        "receptor-binario.md",
+        "controle-remoto.md",
+        "carrinho.md"
     ],
     "testFiles": [
         "test.ts"
