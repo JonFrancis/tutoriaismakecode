@@ -291,7 +291,6 @@ basic.forever(function () {
             basic.pause(200)
             robot.motorStop()
         }
-        
     } 
 })
 ```
