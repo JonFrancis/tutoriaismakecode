@@ -21,7 +21,8 @@
         "receptor-binario.md",
         "controle-remoto.md",
         "carrinho.md",
-        "controle-inclinacao.md"
+        "controle-inclinacao.md",
+        "carrinho-obstaculo.md"
     ],
     "testFiles": [
         "test.ts"
