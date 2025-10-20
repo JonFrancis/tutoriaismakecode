@@ -20,7 +20,9 @@
         "energia.md",
         "receptor-binario.md",
         "controle-remoto.md",
-        "carrinho.md"
+        "carrinho.md",
+        "controle-inclinacao.md",
+        "carrinho-obstaculo.md"
     ],
     "testFiles": [
         "test.ts"
