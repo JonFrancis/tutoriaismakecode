@@ -1,29 +1,28 @@
 # Contador de Passos
 
-## {Passo 1}
+## {Variável}
+ 
+Na categoria ``||variables:Variáveis||``. Crie uma variável chamada **passos**.
 
-Primeiro, precisamos criar uma variável para acompanhar o número de passos 🦶. Uma variável é um "recipiente" para guardar valores.  
-Clique na categoria ``||variables:Variáveis||`` na Caixa de Ferramentas. Clique no botão **Fazer uma variável**. Dê o nome **"passos"** para a nova variável e clique em **OK**.
-
-## {Passo 2}
-
-Clique na categoria ``||variables:Variáveis||`` na Caixa de Ferramentas. Você notará que apareceram novos blocos. Arraste um bloco ``||variables:definir passos||`` para dentro do bloco ``||basic:no iniciar||``. Isso define o valor da variável ``||variables:passos||`` como **0** quando o programa inicia.
+E dentro do bloco ``||basic:no iniciar||`` use ``||variables:definir passos||`` e mude o número para 0.
 
 ```blocks
 let passos = 0
 ```
 
-## {Passo 3}
+## {Registrar Passos}
 
-Vamos registrar um passo sempre que o micro:bit for chacoalhado. Clique na categoria ``||input:Entrada||`` na Caixa de Ferramentas. Arraste um bloco ``||input:ao sacudir||`` para a área de trabalho e coloque-o em qualquer lugar.
+Vamos registrar um passo sempre que o micro:bit for chacoalhado. 
+
+Arraste o bloco ``||input:ao sacudir||``.
 
 ```blocks
 input.onGesture(Gesture.Shake, function () {})
 ```
 
-## {Passo 4}
+## {Registrar Passos}
 
-Clique na categoria ``||variables:Variáveis||`` na Caixa de Ferramentas. Arraste um bloco ``||variables:alterar passos||`` para dentro do bloco ``||input:em agitar||``. Agora, toda vez que sacudirmos o micro:bit (ou dermos um passo), vamos somar 1 ao valor da variável ``||variables:passos||``.
+Arraste um bloco ``||variables:alterar passos||`` para dentro do bloco ``||input:em agitar||``.
 
 ```blocks
 let passos = 0
@@ -32,9 +31,9 @@ input.onGesture(Gesture.Shake, function () {
 })
 ```
 
-## {Passo 5}
+## {Mostre os passos}
 
-Vamos mostrar o número de passos dados. Clique na categoria ``||basic:Básico||`` na Caixa de Ferramentas. Arraste um bloco ``||basic:mostrar número||`` para dentro do bloco ``||input:em agitar||``, abaixo do bloco ``||variables:mudar passos||``.
+Arraste um bloco ``||basic:mostrar número||`` para dentro do bloco ``||input:em agitar||``, logo abaixo do bloco ``||variables:mudar passos||``.
 
 ```blocks
 let passos = 0
@@ -44,9 +43,9 @@ input.onGesture(Gesture.Shake, function () {
 })
 ```
 
-## {Passo 6}
+## {Mostre os passos}
 
-Clique na categoria ``||variables:Variáveis||`` na Caixa de Ferramentas. Arraste um bloco ``||variables:passos||`` para dentro do bloco ``||basic:mostrar número||``, substituindo o número **0**.
+Arraste sua variável ``||variables:passos||`` substituindo o 0 em ``||basic:mostrar número||``.
 
 ```blocks
 let passos = 0
@@ -56,6 +55,8 @@ input.onGesture(Gesture.Shake, function () {
 })
 ```
 
-## {Passo 7}
+## {Conecte ao micro:bit}
 
-Conecte o @boardname@ ao computador e clique no botão ``|Baixar|``. Siga as instruções para transferir seu código para o @boardname@. Depois que o código for baixado, conecte o micro:bit a pilhas ou bateria. Ande por aí. O micro:bit está contando seus passos?
+Conecte o @boardname@ ao computador e clique no botão ``|Baixar|``.
+
+Teste seu contador de passos.
