@@ -3,29 +3,26 @@
 ## Aprendendo a ligar e controlar um LED com o @boardname@ @unplugged
 ![Imagem da Montagem](https://raw.githubusercontent.com/BrinoOficial/TutoriaisMakeCode/master/LEDMicrobit.png)
 
-> Talvez nada aconteça **sem código** — é normal! Diferente do **3V**, as portas **P0/P1/P2** só "ligam" quando **programamos**.
+## {Energizando P0}
+Vamos acender o LED.
 
-## {Vamos ligar o P0}
-Vamos "energizar" a porta **P0** por código.
-
-Na aba ``||advanced:Avançado||`` na categoria ``||pins:Pins||``, arraste **``||pins:escrever pino P0 para 1||``** para dentro de ``||basic:no iniciar||``.
+Arraste um bloco ``||pins:escrever pino P0 para 1||`` para dentro de ``||basic:no iniciar||``.
 
 ```blocks
 pins.digitalWritePin(DigitalPin.P0, 1)
 ```
 
+## {Teste}
 > Agora ao apertar em ``||Baixar||`` o LED deve acender.
 
----
-
 ## {Piscar o LED}
-Agora vamos fazer o LED **piscar**.
+Vamos fazer o LED piscar, para isso apague o código anterior.
 
-Em ``||basic:Básico||``, use **``||basic:sempre||``** e dentro dele:
-1. **``||pins:escrever pino P0 para 1||``**
-2. **``||basic:pausa (ms)||``** com **500**
-3. **``||pins:escrever pino P0 para 0||``**
-4. **``||basic:pausa (ms)||``** com **500**
+Dentro de ``||basic:sempre||``:
+1. ``||pins:escrever pino P0 para 1||``
+2. ``||basic:pausa 500(ms)||``
+3. ``||pins:escrever pino P0 para 0||``
+4. ``||basic:pausa 500(ms)||``
 
 ```blocks
 basic.forever(function () {
@@ -36,14 +33,18 @@ basic.forever(function () {
 })
 ```
 
-> Ajuste a **pausa** para piscar mais rápido/devagar (100 = rápido, 1000 = lento).
-
----
+## {Teste}
+> Agora ao apertar em ``||Baixar||`` o LED deve piscar.
+> Ajuste a **pausa** para piscar mais rápido ou mais devagar (100 = rápido, 1000 = lento).
 
 ## {Botão liga/desliga}
-Vamos controlar o LED com o **botão A**.  
-Crie a variável ``||variables:ligado||``. 
-Em ``||input:Entrada||`` arraste ``||input:no botão A pressionado||``
+Vamos controlar o LED com o **botão A**, , para isso apague o código anterior.
+
+Crie a variável ``||variables:ligado||``.
+
+Arraste o bloco ``||input:no botão A pressionado||``
+
+E dentro dele use ``||variables:definir||`` ``||variables:ligado||`` = ``||logic:não||`` ``||variables:ligado||``.
 
 ```blocks
 let ligado = false
@@ -52,11 +53,10 @@ ligado = !(ligado)
 })
 ```
 
----
-
 ## {Botão liga/desliga}
-Agora vamos adicionar o bloco ``||logic:se, então... senão||`` 
-Vamos adicionar ``||variables:ligado||`` após o ``||logic:se||``
+Agora vamos adicionar o bloco ``||logic:se, então... senão||`` ainda dentro de ``||input:no botão A pressionado||``.
+
+A condição do  ``||logic:se||`` deve ser a variável ``||variables:ligado||``
 
 ```blocks
 let ligado = false
@@ -68,10 +68,10 @@ input.onButtonPressed(Button.A, function () {
 })
 ```
 
----
 ## {Botão liga/desliga}
-Em ``||logic:se ligado então||`` vamos adicionar ``||pins:gravação digital||`` selecionar o pin P0 e após "para" vamos colocar o número 1.
-Em "else" vamos fazer a mesma coisa, mas mudar o número para 0
+No ``||logic:se||`` vamos adicionar ``||pins:gravação digital||`` pin P0 para 1.
+
+No ``||logic:senão||`` vamos fazer a mesma coisa, mas mudar o número para 0
 
 ```blocks
 let ligado = false
@@ -84,15 +84,9 @@ input.onButtonPressed(Button.A, function () {
     }
 })
 ```
----
 
----
-## {Botão liga/desliga}
+## {Teste}
 > Agora ao apertar em ``||Baixar||`` o botão A deve funcionar como uma chave para o LED. 
-
----
 
 ## {Desafio}
 1. **Economia inteligente:** faça o LED apagar sozinho após **10 s** ligado.  
-
----
