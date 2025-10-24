@@ -1,34 +1,17 @@
 # Jogo dos Reflexos
 
-## Introdução
-
-*Jogo dos Reflexos* é um jogo de habilidade em que o jogador precisa pressionar **A** exatamente quando o ponto chega ao centro da tela.
-
-## Crie uma variável
-
-Na aba ``||variables:Variáveis||`` crie uma nova variável e chame ela de `ponto`.
-Crie um bloco ``||basic:Básico||`` ``||basic:no iniciar||``.
-Arraste um bloco ``||variables:definir sprite para||`` para dentro do ``||basic:no iniciar||`` e troque ``sprite`` para ``||variables:ponto||``.
-
-```blocks
-let ponto = 0
-```
-
-## Crie um sprite
-
-Em ``||advanced:Avançado||`` puxe um bloco de ``||game:Jogo||`` ``||game:criar sprite||`` e coloque-o dentro de ``||variables:deinir sprite para||`` substituindo o `0`. 
-O *ponto* é um único pixel que pode se mover na tela. 
-Ele possui uma posição ``x`` e ``y`` junto com uma direção de movimento.
+## {Variável}
+1. Crie uma variável e chame ela de ``||variables:ponto||``.
+2. Arraste um bloco ``||variables:definir ponto para||`` para dentro de ``||basic:no iniciar||``.
+3. Pegue o bloco ``||game:criar sprite||`` e coloque-o dentro de ``||variables:deinir sprite para||`` substituindo o **0**. 
 
 ```blocks
 let ponto = game.createSprite(2, 2)
 ```
 
-## Mova o ponto
-
-O ``||variables:ponto||`` começa no centro apontando para a direita. 
-Coloque um bloco ``||game:mover||`` dentro de ``||basic:sempre||`` para fazê-lo se mover. 
-Note que ele se move para a direita, mas não volta.
+## {Movimentação}
+1. Coloque um bloco ``||game:mover||`` dentro de ``||basic:sempre||``. 
+Assim nosso ``||variables:ponto||`` se move para a direita.
 
 ```blocks
 let Ponto = game.createSprite(2, 2)
@@ -37,10 +20,9 @@ basic.forever(function () {
 })
 ```
 
-## Fazer o ponto sair do canto
-
-Pegue um bloco de ``||game:Jogo||`` ``||game:se na borda, saltar||`` para fazer o ``||variables:ponto||`` quicar na borda da tela. 
-Também adicione um bloco ``||basic:pause||`` para que ele não se mova muito rápido.
+## {Movimentação}
+1. Arraste o bloco de ``||game:se na borda, saltar||`` para fazer o ``||variables:ponto||`` quicar na borda da tela. 
+2. Também adicione um bloco ``||basic:pause||`` para que ele não se mova muito rápido.
 
 ```blocks
 let ponto = game.createSprite(2, 2)
@@ -51,11 +33,11 @@ basic.forever(function () {
 })
 ```
 
-## Utilizando os Reflexos
+## {Reflexos}
+Quando **A** for pressionado, testamos se o ``||variables:ponto||`` está no centro ou não:
 
-Quando **A** for pressionado, testamos se o ``||variables:ponto||`` está no centro ou não.
-Use um bloco de ``||input:Entrada||`` ``||input:no botão pressionado||`` para tratar o botão **A**. 
-Coloque um bloco ``||logic:se ... senão||``.
+1. Use o ``||input:no botão A pressionado||``. 
+2. Coloque um bloco ``||logic:se ... senão||`` dentro dele.
 
 ```blocks
 let ponto = game.createSprite(2, 2)
@@ -64,17 +46,12 @@ input.onButtonPressed(Button.A, function () {
     } else {
     }
 })
-basic.forever(function () {
-    ponto.move(1)
-    basic.pause(100)
-    ponto.ifOnEdgeBounce()
-})
 ```
 
-## Utilizando os Reflexos
-
-Dentro de verdadeiro use um bloco de comparação de igualdade que você encontra em ``||logic:Lógica||``.
-Para o primeiro espaço da comparação pegue x do ``||variables:ponto||`` na aba de ``||game:Jogo||`` e coloque `2` no segundo espaço.
+## {Reflexos}
+1. A condição do ``||logic:se||`` deve ser ``||logic:=||``
+2. O primeiro espaço de ``||logic:=||`` deve ser ``||game:ponto x||``
+3. O segundo espaço de ``||logic:=||`` deve ser **2**
 
 ```blocks
 let ponto = game.createSprite(2, 2)
@@ -83,16 +60,13 @@ input.onButtonPressed(Button.A, function () {
     } else {
     }
 })
-basic.forever(function () {
-    ponto.move(1)
-    basic.pause(100)
-    ponto.ifOnEdgeBounce()
-})
 ```
 
-## Pontuação e fim de jogo
+## {Pontuação}
 
-Por fim, puxe um bloco ``||game:alterar pontuação||`` e um bloco ``||game:fim de jogo||`` para lidar tanto com o sucesso (sprite no centro) quanto com a falha (sprite fora do centro).
+Por fim:
+1. No ``||logic:se||`` devemos ter um bloco ``||game:alterar pontuação||``
+2. No ``||logic:senão||`` devemos ter um bloco ``||game:fim de jogo||``
 
 ```blocks
 let ponto = game.createSprite(2, 2)
@@ -110,6 +84,10 @@ basic.forever(function () {
 })
 ```
 
-## Teste e faça o download
+## {Finalizado}
 
-Seu jogo está pronto! Conecte seu @boardname@, pressione ``|Baixar|`` para experimentá-lo no dispositivo.
+Primeiro teste o jogo no preview do @boardname no lado esquerdo da tela.
+
+Com o jogo finalizado e funcionando, conecte seu @boardname@ e clique em ``|Baixar|``.
+
+Divirta-se!
