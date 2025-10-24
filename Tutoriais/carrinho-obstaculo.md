@@ -4,7 +4,7 @@ github:microsoft/microbit-robot
 # Carrinho que desvia de obstáculos
 
 ## {Iniciar o robô e o rádio}
-Use o mesmo **grupo** do transmissor.
+Use o mesmo **grupo** do transmissor no seu rádio.
 
 ```blocks
 radio.setGroup(1)
@@ -12,13 +12,11 @@ robot.yahboomTinyBit.start()
 ```
 
 ## {Variável}
-Crie as ``||variables:Variáveis||`` **cmd**, **ultimo** e **tempo**.
+Crie as ``||variables:Variáveis||``:
 
--``||variables:cmd||`` é o nosso comando, vamos iniciar ele em 4, pois é o comando para o carrinho ficar parado.
-
--``||variables:ultimo||`` serve para salvarmos o momento em que o comando chegou, vamos iniciar em 0.
-
--``||variables:tempo||`` serve para testarmos se o carrinho parou de receber comandos, vamos iniciar em 400 (que será equivalente a 0,4 segundos).
+1. ``||variables:cmd||`` é o nosso comando, vamos iniciar ele em 4, pois é o comando para o carrinho ficar parado.
+2. ``||variables:ultimo||`` serve para salvarmos o momento em que o comando chegou, vamos iniciar em 0.
+3. ``||variables:tempo||`` serve para testarmos se o carrinho parou de receber comandos, vamos iniciar em 400ms.
 
 ```blocks
 let cmd = 4
@@ -29,9 +27,9 @@ let tempo = 400
 ## {Guardar o comando}
 Vamos utiliza o bloco ``||radio:ao receber rádio n||``.
 
-E dentro desse bloco fazer ``||variable:cmd||`` = n;
+E dentro desse bloco igualar nosso ``||variable:cmd||`` ao n enviado pelo rádio;
 
-e ultimo = ``||control:millis||``.
+e igualar ultimo ao bloco ``||control:millis||``.
 
 ```blocks
 let cmd = 4
@@ -42,12 +40,12 @@ radio.onReceivedNumber(function (n) {
 })
 ```
 
-## {Fazer o carrinho andar com os comandos}
+## {Parar}
 Dentro do bloco ``||basic:sempre||`` vamos adicionar um bloco de ``||logic:se ... senão||``.
 
-A condição do ``||logic:se||`` vai ser:
+E como condição do ``||logic:se||``,``||control:millis||`` - ``||variable:ultimo||`` > tempo. 
 
-- ``||control:millis||`` - ``||variable:ultimo||`` > tempo. Isso vai testar se nosso último comando foi enviado faz algum tempo.
+Isso vai testar se nosso último comando foi enviado faz algum tempo.
 
 ```blocks
 let tempo = 400
@@ -59,7 +57,7 @@ basic.forever(function () {
 })
 ```
 
-## {Fazer o carrinho andar com os comandos}
+## {Parar}
 Dentro do bloco ``||logic:se||`` devemos parar o carrinho adicionando o comando:
 
 - ``||robot:robot motor stop||``.
@@ -75,16 +73,12 @@ basic.forever(function () {
 })
 ```
 
-## {Fazer o carrinho andar com os comandos}
+## {Andar para frente}
 Dentro de ``||logic:senão||`` vamos criar uma lista de condições.
+1. Comece pegando um bloco ``||logic:se ... senão||``.
+2. A condição no ``||logic:se||`` é ``||variable::cmd||`` = 0;
+3. Dentro do ``||logic:se||`` devemos fazer o carrinho andar para frente com ``||robot:motor tank 100% 100%||``.
 
-Comece pegando um bloco ``||logic:se ... senão||``.
-
-Para o carrinho andar pra frente, vamos adicionar:
-
-- A condição no ``||logic:se||`` é ``||variable::cmd||`` = 0;
-
-- Dentro do se deve ter ``||robot:motor tank 100% 100%||``.
 ```blocks
 let tempo = 400
 let ultimo = 0
@@ -102,14 +96,10 @@ basic.forever(function () {
 })
 ```
 
-## {Fazer o carrinho andar com os comandos}
-Aperte no **+** abaixo do ``||logic:senão||``.
-
-Para o carrinho andar pra direita, vamos adicionar:
-
-- A condição no ``||logic:se||`` é ``||variable::cmd||`` = 1;
-
-- Dentro do se deve ter ``||robot:motor tank 0% 100%||``.
+## {Andar para direita}
+1. Aperte no **+** abaixo do ``||logic:senão||``.
+2. A condição do novo ``||logic:se||`` é ``||variable::cmd||`` = 1;
+3. Dentro do ``||logic:se||`` devemos fazer o carrinho andar para direita com ``||robot:motor tank 0% 100%||``.
 
 ```blocks
 let tempo = 400
@@ -130,14 +120,10 @@ basic.forever(function () {
 })
 ```
 
-## {Fazer o carrinho andar com os comandos}
-Aperte no **+** abaixo do ``||logic:senão||``.
-
-Para o carrinho andar pra esquerda, vamos adicionar:
-
-- A condição no ``||logic:se||`` é ``||variable::cmd||`` = 2;
-
-- Dentro do se deve ter ``||robot:motor tank 100% 0%||``.
+## {Andar para esquerda}
+1. Aperte no **+** abaixo do ``||logic:senão||``.
+2. A condição no novo ``||logic:se||`` é ``||variable::cmd||`` = 2;
+3. Dentro do ``||logic:se||``  devemos fazer o carrinho andar para esquerda com ``||robot:motor tank 100% 0%||``.
 
 ```blocks
 let tempo = 400
@@ -160,14 +146,10 @@ basic.forever(function () {
 })
 ```
 
-## {Fazer o carrinho andar com os comandos}
-Aperte no **+** abaixo do ``||logic:senão||``.
-
-Para o carrinho andar pra trás, vamos adicionar:
-
-- A condição no ``||logic:se||`` é ``||variable::cmd||`` = 3;
-
-- Dentro do se deve ter ``||robot:motor tank -100% -100%||``.
+## {Andar para trás}
+1. Aperte no **+** abaixo do ``||logic:senão||``.
+2. A condição no novo ``||logic:se||`` é ``||variable::cmd||`` = 3;
+3. Dentro do ``||logic:se||`` devemos fazer o carrinho andar para trás com ``||robot:motor tank -100% -100%||``.
 
 ```blocks
 let tempo = 400
@@ -192,8 +174,8 @@ basic.forever(function () {
 })
 ```
 
-## {Fazer o carrinho andar com os comandos}
-Para o carrinho andar pra trás, vamos adicionar no ``||logic:senão||``:
+## {Parar}
+Se não foram enviado comandos, vamos adicionar no ``||logic:senão||``:
 
 - ``||robot:robot motor stop||``.
 
@@ -220,7 +202,7 @@ basic.forever(function () {
 })
 ```
 
-## {Pausa ao final}
+## {Pausa}
 Adicione uma ``||basic:pausa 20||`` ao final do código.
 
 ```blocks
@@ -250,8 +232,7 @@ basic.forever(function () {
 ## {Desvia de obstáculos}
 Para que o robô desvie de obstáculos vamos criar a ``||variable:Variável||`` distância.
 
-Dentro do primeiro se (quando o carrinho anda pra frente), vamos ``||variable:definir distância para||`` ``||robot:robot obstacle distance (cm)
-||``.
+Dentro do primeiro se (quando o carrinho anda pra frente), vamos ``||variable:definir distância para||`` ``||robot:robot obstacle distance (cm)||``.
 
 ```blocks
 let cmd = 4
@@ -301,7 +282,6 @@ basic.forever(function () {
 - Ligue o carrinho e o micro:bit controle remoto e teste os comandos.
 
 ```template
-// Carregado automaticamente quando o tutorial abrir
 radio.setGroup(1)
 robot.yahboomTinyBit.start()
 ```
