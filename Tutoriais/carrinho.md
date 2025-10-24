@@ -4,7 +4,7 @@ github:microsoft/microbit-robot
 #Carrinho de controle remoto
 
 ## {Iniciar o robô e o rádio}
-Use o mesmo **grupo** do transmissor no seu rádio.
+Use o **grupo de rádio** indicado pelo(a) professor(a).
 
 ```blocks
 radio.setGroup(1)

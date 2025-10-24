@@ -13,7 +13,7 @@ Vamos usar a inclinação do @boardname@ para enviar comandos pelo rádio:
 ---
 
 ## {Configurar o rádio}
-Na aba ``||radio:rádio||``, ajuste o grupo indicado pelo professor para seu grupo.
+Use o **grupo de rádio** indicado pelo(a) professor(a).
 
 ```blocks
 radio.setGroup(1)
