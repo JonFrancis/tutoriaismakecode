@@ -1,17 +1,24 @@
-# Termômetro sem fio – **EMISSOR (simples)**
+# Termômetro sem fio – **EMISSOR**
 
 ## {Configurar o rádio}
-Na categoria ``||radio:rádio||``, arraste **``||radio:definir grupo do rádio||``** e troque para **o número indicado pelo professor** (o mesmo do receptor).
+Use o **grupo de rádio** indicado pelo(a) professor(a).
 
 ```blocks
-radio.setGroup(999)
+radio.setGroup(1)
+```
+## {Variável}
+Crie a variável ``||variables:temp||`` e use ``||variables:definir temp para||`` ``||input:temperatura (°C)||``. 
+
+```blocks
+basic.forever(function () {
+    let temp = input.temperature()
+})
 ```
 
 ## {Enviar a temperatura}
-Em ``||basic:Básico||``, adicione **``||basic:sempre||``**. Dentro dele:
-1. Pegue ``||input:temperatura (°C)||`` (``||input:Entrada||``) e guarde em uma variável local ``temp``.  
-2. Envie pelo rádio com **``||radio:rádio envia value||``**, escrevendo **T** no campo *name* e usando ``temp`` no *value*.  
-3. Adicione **``||basic:pausa (ms)||``** com **1000**.
+Abaixo da definição da variável adicione : 
+1. ``||radio:rádio envia value T = temp||``.
+2. ``||basic:pausa 1000(ms)||``.
 
 ```blocks
 basic.forever(function () {
@@ -22,4 +29,6 @@ basic.forever(function () {
 ```
 
 ## {Teste}
-Baixe no **Emissor** e confirme que está tudo certo. Pronto! Ele envia a temperatura a cada 1 segundo.
+Baixe no **Emissor** e confirme que está tudo certo.
+
+Ele envia a temperatura a cada 1 segundo.
