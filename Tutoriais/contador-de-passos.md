@@ -1,9 +1,5 @@
 # Contador de Passos
 
-## Conte seus passos com o micro:bit! @unplugged
-
-Transforme seu @boardname@ em um contador de passos. Vamos usar o sensor de movimento (acelerômetro) para identificar quando damos um passo com o micro:bit.
-
 ## {Passo 1}
 
 Primeiro, precisamos criar uma variável para acompanhar o número de passos 🦶. Uma variável é um "recipiente" para guardar valores.  
