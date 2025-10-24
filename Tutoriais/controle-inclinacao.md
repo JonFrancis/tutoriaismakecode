@@ -74,8 +74,6 @@ basic.forever(function () {
 })
 ```
 
----
-
 ## {Teste}
 - Conecte seu @boardname que será o controle remoto e aperte no botão ``||Baixar||``.    
 
