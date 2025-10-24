@@ -1,23 +1,9 @@
 # Receptor de Bits
 
-## Vamos agora ler os sinais enviados pelo nosso emissor para descobrir a mensagem
-
----
-
 ## {Ler o pino P0}
-Dentro de ``||basic:sempre||`` adicione um bloco de ``||logic:Lógica||`` ``||logic:se ... senão||``.
-
-```blocks
-basic.forever(function () {
-    if (true) {
-    } else {
-    }
-})
-```
----
-## {Ler o pino P0}
-Nossa condição vai ser uma condição de lógica ``||logic:>=||``, maior ou igual.
-- ``||pins:leitura analógica pin P0||`` >= 700
+1. Dentro de ``||basic:sempre||`` adicione um bloco de ``||logic:se ... senão||``.
+2. A condição do ``||logic:se||`` deve ser ``||logic:>=||``.
+3. o primeiro espaço do ``||logic:>=||`` deve ser ``||pins:leitura analógica pin P0||``, e o segundo 700.
 
 ```blocks
 basic.forever(function () {
@@ -26,7 +12,20 @@ basic.forever(function () {
     }
 })
 ```
----
+
+## {Ler o pino P0}
+1. No ``||logic:se||`` devemos colocar um bloco ``||basic: mostrar número 0||``
+2. No ``||logic:senao||`` devemos limpar a tela com ``||basic:limpar tela||``
+```blocks
+basic.forever(function () {
+    if (pins.analogReadPin(AnalogPin.P0) >= 700) {
+        basic.showNumber(0)
+    } else {
+        basic.clearScreen()
+    }
+})
+```
+
 ## {Ler o pino P1}
 Para o pino P1 vamos replicar o código anterior, logo abaixo do fim do nosso ``||logic:senão||``.
 
