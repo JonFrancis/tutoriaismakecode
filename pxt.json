@@ -22,7 +22,8 @@
         "Tutoriais/controle-remoto.md",
         "Tutoriais/carrinho.md",
         "Tutoriais/controle-inclinacao.md",
-        "Tutoriais/carrinho-obstaculo.md"
+        "Tutoriais/carrinho-obstaculo.md",
+        "Tutoriais/gravador.md"
     ],
     "testFiles": [
         "test.ts"
