@@ -24,7 +24,8 @@
         "Tutoriais/controle-inclinacao.md",
         "Tutoriais/carrinho-obstaculo.md",
         "Tutoriais/gravador.md",
-        "Tutoriais/seguidor-de-linha.md"
+        "Tutoriais/seguidor-de-linha.md",
+        "Tutoriais/centrifuga.md"
     ],
     "testFiles": [
         "test.ts"
