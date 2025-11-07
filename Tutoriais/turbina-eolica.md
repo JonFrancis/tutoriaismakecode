@@ -2,7 +2,7 @@
 
 ## Loop
 Primeiro vamos fazer um loop, e dentro dele terá a maioria do nosso código.
-Pegue o bloco ``||loop:every 250ms||``
+Pegue o bloco ``||Loops:every 250ms||``
 
 ```blocks
 loops.everyInterval(250, function () {}
