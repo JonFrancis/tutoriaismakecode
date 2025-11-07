@@ -25,7 +25,8 @@
         "Tutoriais/carrinho-obstaculo.md",
         "Tutoriais/gravador.md",
         "Tutoriais/seguidor-de-linha.md",
-        "Tutoriais/centrifuga.md"
+        "Tutoriais/centrifuga.md",
+        "Tutoriais/turbina-eolica.md"
     ],
     "testFiles": [
         "test.ts"
