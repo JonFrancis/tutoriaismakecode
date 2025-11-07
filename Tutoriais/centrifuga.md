@@ -32,3 +32,11 @@ input.onButtonPressed(Button.B, function () {
 Conecte o @boardname@ no computador e clique no botão ``|Download|``.
 
 Agora coloque o micro:bit na nossa centrífuga e faça o teste
+
+
+```template
+SuperBit.MotorStopAll()
+basic.forever(function () {
+	
+})
+```
